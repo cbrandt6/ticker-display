@@ -1,12 +1,8 @@
 /**********************************************************************
-* Filename    : 1.1.7_Lcd1602.c
-* Description : Control LCD Display.
-* Author      : Robot
-* E-mail      : support@sunfounder.com
-* website     : www.sunfounder.com
-* Update      : Daisy    2019/08/02
+
 **********************************************************************/
 #include <stdio.h>
+#include <unistd.h>
 #include <wiringPi.h>
 #include <wiringPiI2C.h>
 #include <string.h>
@@ -101,6 +97,10 @@ void write(int x, int y, char data[]){
 void main(){
 	fd = wiringPiI2CSetup(LCDAddr);
 	init();
-	write(0, 0, "Hello there...");
-	write(0, 1, "General Kenobi");
+	for(int i = 15; i >=0; i--){
+		write(i, 0, "Hello there...");
+		sleep(60);
+	}
+	
+	//write(0, 1, "General Kenobi");
 }
