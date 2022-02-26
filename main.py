@@ -1,19 +1,19 @@
-import LCD1602
+from request_helper import RequestHelper
+from lcd_helper import LCDHelper
 import time
 
 
-def setup():
-    LCD1602.init(0x27, 1)  # init(slave address, background light)
-    LCD1602.write(0, 0, 'Hello')
-    LCD1602.write(1, 1, 'There')
-    LCD1602.openlight()
-    time.sleep(2)
-
-def destroy():
-	LCD1602.clear()
+def main():
+    lcdhelper = LCDHelper()
+    request_helper = RequestHelper()
+    time.sleep(15)
+    lcdhelper.clear()
+    lcdhelper.write("new text", (5, 0))
+    lcdhelper.write("next text", (0, 1))
 
 if __name__ == "__main__":
-	try:
-		setup()
-	except KeyboardInterrupt:
-		destroy()
+    try:
+        main()
+    except KeyboardInterrupt:
+        
+        print("Closing...")
