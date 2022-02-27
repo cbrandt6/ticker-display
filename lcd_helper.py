@@ -19,7 +19,14 @@ class LCDHelper:
     def scrolling_write(self, text):
         try:
             while(True):
-                pass
+                for i in range(15, -1*len(text), -1):
+                    self.clear()
+                    # write
+                    if i >= 0:
+                        self.write(text, (i, 0))
+                    else:
+                        self.write(text[len(text) - (len(text)+i)::], (i, 0))
+                    time.sleep(0.5)
         except KeyboardInterrupt:
             print("Loop broken")
             
