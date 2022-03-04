@@ -20,13 +20,15 @@ class LCDHelper:
         try:
             while(True):
                 for i in range(15, -1*len(text), -1):
+                    
                     self.clear()
+                    time.sleep(0.15)
                     # write
                     if i >= 0:
                         self.write(text, (i, 0))
                     else:
                         self.write(text[len(text) - (len(text)+i)::], (i, 0))
-                    time.sleep(0.5)
+                    time.sleep(0.15)
         except KeyboardInterrupt:
             print("Loop broken")
             
